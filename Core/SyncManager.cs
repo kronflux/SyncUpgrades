@@ -34,7 +34,7 @@ public static class SyncManager
         _syncExtraJump = Entry.BepConfig.Bind(Section, "Extra Jump", true, "Sync Extra Jump Count");
         _syncTumbleLaunch = Entry.BepConfig.Bind(Section, "Tumble Launch", true, "Sync Tumble Launch Count");
         _syncMapPlayerCount = Entry.BepConfig.Bind(Section, "Map Player Count", true, "Sync Map Player Count");
-        _syncSprintSpeed = Entry.BepConfig.Bind(Section, "Sprint Speed", false, "Sync Sprint Speed");
+        _syncSprintSpeed = Entry.BepConfig.Bind(Section, "Sprint Speed", true, "Sync Sprint Speed");
         _syncGrabStrength = Entry.BepConfig.Bind(Section, "Grab Strength", true, "Sync Grab Strength");
         _syncGrabRange = Entry.BepConfig.Bind(Section, "Grab Range", true, "Sync Grab Range");
         _syncGrabThrow = Entry.BepConfig.Bind(Section, "Grab Throw", true, "Sync Grab Throw");
@@ -76,7 +76,7 @@ public static class SyncManager
         // Sync the upgrade to all clients
         SyncHostToAll(bundle);
     }
-    
+
     public static bool SyncHostToTarget(string targetSteamId)
     {
         SyncBundle bundle = SyncBundle.Default(targetSteamId);
