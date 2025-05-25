@@ -11,6 +11,7 @@ namespace SyncUpgrades.Core;
 public static class SyncManager
 {
     private const string Section = "Sync";
+    private static ConfigEntry<bool>? _syncHealthPacks;
     private static ConfigEntry<bool>? _syncHealth;
     private static ConfigEntry<bool>? _syncStamina;
     private static ConfigEntry<bool>? _syncExtraJump;
@@ -22,9 +23,12 @@ public static class SyncManager
     private static ConfigEntry<bool>? _syncTumbleLaunch;
     private static ConfigEntry<bool>? _moddedUpgrades;
 
+    public static bool SyncHealthPacks => _syncHealthPacks?.Value ?? true;
+
     internal static void Init()
     {
         // Initialize configuration
+        _syncHealthPacks = Entry.BepConfig.Bind(Section, "Health Packs", true, "Sync Health Packs (share healing from health packs among all players)");
         _syncHealth = Entry.BepConfig.Bind(Section, "Health", true, "Sync Max Health");
         _syncStamina = Entry.BepConfig.Bind(Section, "Stamina", true, "Sync Max Stamina");
         _syncExtraJump = Entry.BepConfig.Bind(Section, "Extra Jump", true, "Sync Extra Jump Count");
